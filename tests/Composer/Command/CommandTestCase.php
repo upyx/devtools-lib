@@ -128,7 +128,7 @@ abstract class CommandTestCase extends TestCase
         $this->command->setApplication(null);
 
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Could not find an Application instance');
+        $this->expectExceptionMessage('Composer commands can only work with an ');
 
         $this->command->getApplication();
     }

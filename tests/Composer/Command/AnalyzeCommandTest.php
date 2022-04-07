@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ramsey\Test\Dev\Tools\Composer\Command;
 
 use Composer\Console\Application;
+use Composer\IO\IOInterface;
 use Mockery\MockInterface;
 use Ramsey\Dev\Tools\Composer\Command\AnalyzeCommand;
 use Symfony\Component\Console\Command\Command;
@@ -52,6 +53,7 @@ class AnalyzeCommandTest extends CommandTestCase
         /** @var Application & MockInterface $application */
         $application = $this->mockery(Application::class, [
             'getHelperSet' => $this->mockery(HelperSet::class),
+            'getIO' => $this->mockery(IOInterface::class),
         ]);
         $application->shouldReceive('getDefinition')->passthru();
         $application

@@ -24,8 +24,6 @@ namespace Ramsey\Dev\Tools\Composer\Command;
 
 use Composer\Command\BaseCommand as ComposerBaseCommand;
 use Composer\EventDispatcher\EventDispatcher;
-use RuntimeException;
-use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -126,21 +124,5 @@ abstract class BaseCommand extends ComposerBaseCommand
     public function withPrefix(string $name): string
     {
         return $this->getPrefix() . $name;
-    }
-
-    /**
-     * @psalm-suppress MoreSpecificReturnType
-     * @psalm-suppress LessSpecificReturnStatement
-     */
-    public function getApplication(): Application
-    {
-        /** @var Application | null $application */
-        $application = parent::getApplication();
-
-        if ($application === null) {
-            throw new RuntimeException('Could not find an Application instance');
-        }
-
-        return $application;
     }
 }
